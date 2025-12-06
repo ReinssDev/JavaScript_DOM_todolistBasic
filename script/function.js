@@ -1,22 +1,43 @@
 import { objectElement } from "./config.js"
-// Buat id untuk setiap item memiliki id unik
-const addTodo= (text) => {
-    return({id: Date.now(), text });
-}
-
-objectElement.buttonSubmit.addEventListener('click', () => {
-    // Validasi jika input kosong atau tidak
+const addItem = () => {
+    // Validasi input
     if(!objectElement.input.value.trim()) {
-        const alertText = 'Harap, anda masukkan input yang sesuai dan tidak boleh kosong!!!';
-        objectElement.alertTodo.textContent = alertText;
+        objectElement.alertTodo.textContent = 'Harap, anda masukkan input yang sesuai dan tidak boleh kosong!!!';
         objectElement.alertTodo.style.color = '#ed071e';
         return;
-    } else {
-        objectElement.alertTodo.style.display = 'none';
     }
+    objectElement.alertTodo.textContent = '';
+
     const valueText = objectElement.input.value;
+    const elementDate = document.createElement('p');
+    elementDate.textContent = objectElement.inputDate.value;
     const elementLi = document.createElement('li');
-    elementLi.append(valueText);
-    objectElement.containerItemList.append(elementLi);
+    elementLi.append(valueText, elementDate);
+
+    const textContainer = document.createElement('div');
+    textContainer.classList.add('container-list');
+    textContainer.append(elementLi);
+    objectElement.containerItemList.append(textContainer);
+
+    makeTodoElement(textContainer);
+    
     objectElement.input.value = '';
-});
+    objectElement.inputDate.value = '';
+}
+
+const makeTodoElement = (textContainer) => {
+    const buttonRemove = document.createElement('button');
+    buttonRemove.textContent = 'Hapus';
+    buttonRemove.classList.add('btn-delete');
+    buttonRemove.addEventListener('click', () => {
+        textContainer.remove();
+    });
+    textContainer.append(buttonRemove);
+    objectElement.containerItemList.append(textContainer);
+}
+
+const removeItem = () => {
+    objectElement.containerItemList.innerHTML = '';
+}
+
+export {addItem, makeTodoElement, removeItem};

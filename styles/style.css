@@ -4,15 +4,25 @@
     box-sizing: border-box;
 }
 
+header {
+    padding: 10px;
+    background-color: slateblue;
+    color: white;
+}
+
 .container .main-content {
     border: 1px solid #000;
     max-width: 700px;
-    margin: 220px auto;
+    margin: 120px auto;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
     border-radius: 8px;
     box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.5);
+}
+
+form.form-todo {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
 }
 
 h2.header-todo {text-align: center;}
@@ -20,6 +30,13 @@ h2.header-todo {text-align: center;}
 hr{border: 2px solid #000; margin-top: 5px;}
 
 input[type='text'] {
+    padding: 20px;
+    margin-top: 15px;
+    border-radius: 8px;
+    font-size: 1em;
+}
+
+input[type='date'] {
     padding: 20px;
     margin-top: 15px;
     border-radius: 8px;
@@ -38,3 +55,28 @@ button.btn-submit {
 }
 
 button.btn-submit:active {background-color: #03a675; transform: translate(5px, 5px);}
+
+.container-list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 20px;
+    border: 1px solid #000;
+}
+
+.list-item {margin-top: 20px;}
+
+button.btn-delete {
+    background-color: #ed071e;
+    color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: ease-in-out .3s;
+}
+
+button.btn-delete:active {background-color: #c50014;}
